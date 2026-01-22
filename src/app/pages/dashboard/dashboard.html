@@ -1,0 +1,43 @@
+<div class="header">
+  <div class="app-name">Expense Classification</div>
+
+  <div class="profile-container">
+    <button class="profile-btn" (click)="toggleDropdown()">👤</button>
+
+    <div class="dropdown" *ngIf="showDropdown">
+      <div class="dropdown-item settings">
+        ⚙️ Admin Control
+      </div>
+
+      @if (isAdmin()) {
+        <div class="dropdown-item" (click)="goToCategories()">
+          Categories Management
+        </div>
+
+        <div class="dropdown-item" (click)="goToAdminUsers()">
+          Admin User
+        </div>
+      }
+
+      <div class="dropdown-item logout" (click)="logout()">
+        Logout
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dashboard-container">
+    <div class="dashboard-card">
+
+        <h2>Dashboard</h2>
+
+        <input type="file" (change)="onFileChange($event)" />
+
+        <button class="upload-btn" (click)="upload()">Upload CSV</button>
+
+        <br /><br />
+
+        <button class="download-btn" (click)="download()">Download CSV</button>
+
+    </div>
+</div>

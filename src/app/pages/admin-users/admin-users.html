@@ -1,0 +1,36 @@
+<h2>Grant Admin Access</h2>
+
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- Loading state -->
+    <tr *ngIf="loading">
+      <td colspan="3">Loading users...</td>
+    </tr>
+
+    <!-- Data state -->
+    <tr *ngFor="let user of users">
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <button
+          *ngIf="user.role !== 'admin'"
+          (click)="grantAdmin(user._id)">
+          Grant Admin
+        </button>
+      </td>
+    </tr>
+
+    <!-- Empty state -->
+    <tr *ngIf="!loading && users.length === 0">
+      <td colspan="3">No users found</td>
+    </tr>
+  </tbody>
+</table>
